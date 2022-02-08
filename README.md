@@ -10,7 +10,10 @@ Adatbázis migráció, telepítés kezelése cli-ből a backend/migrate.php
 ```
 \backend>php migrate.php --install
 ```
-
+CLI parancsok a migrate.php-n:
+```
+\backend>php migrate.php --help
+```
 Ezután a frontend/src/environments/environment.ts mappában be kell állítani a backend url-jét (pl.: http://localhost/mappa-neve/backend/api.php)
 
 Innentől működik az app:
