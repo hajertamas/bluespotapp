@@ -131,7 +131,7 @@ final class HoursEndpoint implements WebApiEndpoint
             return new ApiResponse(400, "Day must be a valid date string (2022-02-04)");
         }
 
-        if($day < Carbon::now()){
+        if($day < Carbon::today()){
             return new ApiResponse(403, "Reserving hours for a past date is not allowed");
         }
 
