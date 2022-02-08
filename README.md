@@ -36,7 +36,7 @@ Exportálni az --export commanddal lehet:
 ```
 \backend>php migrate.php --export
 ```
-Ez a backend\bluespot-app-export-{currentTimestamp} mappába exportálja az adatbázist, ezt átlehet nevezni és használni importra:
+Ez a backend\bluespot-app-export-{currentTimestamp} mappába exportálja az adatbázist, ezt átlehet nevezni és használni importra (a \backend mappában kell lennie):
 ```
 \backend>php migrate.php --import new_export_name
 ```
