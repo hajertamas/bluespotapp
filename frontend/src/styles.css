@@ -1,0 +1,103 @@
+
+html, body { height: 100% }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spacer{
+    flex: 1 1 auto;
+}
+.text-center{
+    text-align: center;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.text-left{
+    text-align:left;
+}
+.text-right{
+    text-align: right;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.d-block{
+    display: block;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.d-inline{
+    display: inline
+}
+
+.d-inline-block{
+    display: inline-block;
+}
+
+.d-inline-flex{
+    display: inline-flex
+}
+
+.d-none{
+    display: none;
+}
+
+.mt-10{
+    margin-top: 10px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mt-40{
+    margin-top: 40px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+
+.ml-10{
+    margin-left: 10px;
+}
+.ml-20{
+    margin-left: 20px;
+}
+.ml-40{
+    margin-left: 40px;
+}
+
+.mr-10{
+    margin-right: 10px;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.mr-40{
+    margin-right: 40px;
+}
+
+.mx-auto{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.snackbar-white{
+    background-color: #ffffff !important;
+    color: #000000DE;
+}

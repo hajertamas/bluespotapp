@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" >
+    <span class="spacer"></span>
+    <button mat-button routerLink="/" *ngIf="isAuthenticated">
+        <mat-icon>event</mat-icon>
+        Hours
+    </button>
+    <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+        <mat-icon>power_settings_new</mat-icon>
+        Login
+    </button>
+    <button mat-button routerLink="/register" *ngIf="!isAuthenticated">
+        <mat-icon>app_registration</mat-icon>
+        Register
+    </button>
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+    </button>
+    
+</mat-toolbar>
+
+<router-outlet></router-outlet>

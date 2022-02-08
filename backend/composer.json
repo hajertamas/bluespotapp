@@ -1,0 +1,14 @@
+{
+    "name": "htamas/bluespot_app",
+    "description": "Id\u0000nyilv\u0000ntart\u0000 webalkalmaz\u0000s",
+    "type": "project",
+    "authors": [
+        {
+            "name": "hajertamas",
+            "email": "76472742+hajertamas@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^8.82"
+    }
+}

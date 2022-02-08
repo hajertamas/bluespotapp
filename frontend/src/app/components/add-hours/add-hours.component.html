@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" *ngIf="!loading">
+        <mat-error *ngIf="errorMsg">
+            {{errorMsg}}
+        </mat-error>
+        <mat-form-field appearance="fill">
+            <mat-label>Hours</mat-label>
+            <input matInput type="number" placeholder="Hours" name="hours" formControlName="hours" required>
+            <mat-icon matSuffix>schedule</mat-icon>
+            <mat-error *ngIf="(form.get('hours')).errors?.min">Minimum value is 1</mat-error>
+            <mat-error *ngIf="(form.get('hours')).errors?.max">You can only reserve {{maxHoursLeft}} hours for this day</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea rows="5" matInput placeholder="Leave a description" formControlName="description" name="description"></textarea>
+            <mat-error >Max. 250 characters</mat-error>
+        </mat-form-field>
+    </form>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="add()" [disabled]="!form.valid" color="primary" cdkFocusInitial>Add</button>
+</mat-dialog-actions>

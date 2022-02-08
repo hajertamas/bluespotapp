@@ -1,0 +1,75 @@
+.calendar-wrapper{
+    max-width: 100%;
+    width: 1280px;
+    margin: 2em auto;
+    overflow-x: auto;
+}
+.calendar{
+    width: 100%;
+    margin: auto;
+}
+.mat-cell{
+    padding: 10px 30px 66px 30px;
+    vertical-align: baseline;
+    position: relative;
+    border-right: 1px solid rgba(0,0,0,.12);
+}
+.mat-header-cell{
+    text-align: center;
+}
+.cell-date{
+    display: block;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.button-wrapper{
+    text-align: left;
+    position: absolute;
+    bottom: 20px;
+    padding-left: 30px;
+    width: 100%;
+    left: 0;
+}
+
+
+.mat-cell .cell-button{
+    opacity: 0;
+    transition: opacity .35s;
+}
+
+.mat-cell:hover .cell-button{
+    opacity: 1;
+}
+
+.month-picker .mat-calendar-period-button {
+    pointer-events: none;
+}
+  
+.month-picker .mat-calendar-arrow {
+    display: none;
+}
+
+.month-picker-hidden-input{
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;;
+}
+
+.hours{
+
+}
+
+.hour{
+    font-family: monospace;
+}
+
+.table-big-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 615px;
+}

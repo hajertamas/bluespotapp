@@ -1,0 +1,19 @@
+<div class="snackbar-content">
+    <div class="snackbar-message" [ngStyle]="{'color': (cfg.messageColor) ? cfg.messageColor : 'inherit' }">
+        {{cfg.message}}
+    </div>
+    <div class="snackbar-actions" *ngIf="cfg.actions.length > 0">
+        <span *ngFor="let action of cfg.actions">
+            <button mat-flat-button *ngIf="action.type == 'text'" (click)="do(action)">
+                {{action.title}}
+            </button>
+            <button mat-icon-button *ngIf="action.type == 'icon'" (click)="do(action)">
+                {{action.title}}
+            </button>
+            <button mat-icon-button *ngIf="action.type == 'maticon'" (click)="do(action)">
+                <mat-icon>{{action.title}}</mat-icon>
+            </button>
+        </span>
+    </div>
+
+</div>

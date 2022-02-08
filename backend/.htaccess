@@ -1,0 +1,10 @@
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+##403 Forbidden response for all request execept files listed below
+RewriteRule !(api\.php) - [F]
+
+
+</IfModule>
+

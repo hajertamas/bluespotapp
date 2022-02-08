@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+            <h2>Register</h2>
+            <mat-error *ngIf="false">
+                The username and password were not recognized
+            </mat-error>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username"  name="username" formControlName="username" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>
+                    Please provide a valid email address
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email"  name="username" formControlName="email" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error>
+                    Please provide a valid email address
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password" name="password" required>
+                <mat-icon matSuffix>password</mat-icon>
+                <mat-error>
+                    Please provide a valid password
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="passwordConfirm" name="passwordConfirm" required>
+                <mat-icon matSuffix>password</mat-icon>
+                <mat-error>
+                    Passwords don't match
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">Register</button>
+        </form>
+    </mat-card-content>
+</mat-card>

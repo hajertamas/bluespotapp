@@ -1,0 +1,211 @@
+<table class='calendar-table' *ngIf="false">
+    <thead>
+        <tr>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+            <td class="calendar-day" [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}"
+                *ngFor="let c of row; let j = index">
+                <div class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
+                    <strong>{{c.date.getDate()}}</strong> <strong
+                        *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)">
+                        {{monthNames[c.date.getMonth()]}}</strong>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="calendar-wrapper mat-elevation-z3">
+    <table mat-table [dataSource]="weeks" class="calendar">
+
+        <ng-container matColumnDef="mon">
+            <th mat-header-cell *matHeaderCellDef>Monday</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'background-color': dayCellColor(week.day('mon'))}">
+                <ng-container *ngFor="let day of [week.day('mon')]">
+                    <small class="cell-date {{(day.isToday) ? 'bold' : '' }}">
+                        {{monthNames[day.date.getMonth()].substring(0,3)}}. {{day.date.getDate()}}
+                    </small>
+                    <div class="cell-content" *ngIf="isCurrentMonth(day)">
+                        <div class="hours">
+                            <div class="hour" *ngFor="let hour of day.hours">
+                                <span *ngIf="hour.hours < 10">&nbsp;</span>{{hour.hours}} - {{hour.description || 'No
+                                description'}}
+                            </div>
+                        </div>
+                        <div class="button-wrapper"
+                            matTooltip="{{(canReserve(day) && !day.isPastDate) ? 'Reserve hours' : 'Cannot reserve hours for this day'}}">
+                            <button mat-raised-button class="cell-button" (click)="addHours(day)"
+                                [disabled]="(!canReserve(day) || day.isPastDate)">Add<mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tue">
+            <th mat-header-cell *matHeaderCellDef>Tuesday</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'background-color': dayCellColor(week.day('tue'))}">
+                <ng-container *ngFor="let day of [week.day('tue')]">
+                    <small class="cell-date {{(day.isToday) ? 'bold' : '' }}">
+                        {{monthNames[day.date.getMonth()].substring(0,3)}}. {{day.date.getDate()}}
+                    </small>
+                    <div class="cell-content" *ngIf="isCurrentMonth(day)">
+                        <div class="hours">
+                            <div class="hour" *ngFor="let hour of day.hours">
+                                <span *ngIf="hour.hours < 10">&nbsp;</span>{{hour.hours}} - {{hour.description || 'No
+                                description'}}
+                            </div>
+                        </div>
+                        <div class="button-wrapper"
+                            matTooltip="{{(canReserve(day) && !day.isPastDate) ? 'Reserve hours' : 'Cannot reserve hours for this day'}}">
+                            <button mat-raised-button class="cell-button" (click)="addHours(day)"
+                                [disabled]="(!canReserve(day) || day.isPastDate)">Add<mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="wed">
+            <th mat-header-cell *matHeaderCellDef>Wednesday</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'background-color': dayCellColor(week.day('wed'))}">
+                <ng-container *ngFor="let day of [week.day('wed')]">
+                    <small class="cell-date {{(day.isToday) ? 'bold' : '' }}">
+                        {{monthNames[day.date.getMonth()].substring(0,3)}}. {{day.date.getDate()}}
+                    </small>
+                    <div class="cell-content" *ngIf="isCurrentMonth(day)">
+                        <div class="hours">
+                            <div class="hour" *ngFor="let hour of day.hours">
+                                <span *ngIf="hour.hours < 10">&nbsp;</span>{{hour.hours}} - {{hour.description || 'No
+                                description'}}
+                            </div>
+                        </div>
+                        <div class="button-wrapper"
+                            matTooltip="{{(canReserve(day) && !day.isPastDate) ? 'Reserve hours' : 'Cannot reserve hours for this day'}}">
+                            <button mat-raised-button class="cell-button" (click)="addHours(day)"
+                                [disabled]="(!canReserve(day) || day.isPastDate)">Add<mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="thu">
+            <th mat-header-cell *matHeaderCellDef>Thursday</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'background-color': dayCellColor(week.day('thu'))}">
+                <ng-container *ngFor="let day of [week.day('thu')]">
+                    <small class="cell-date {{(day.isToday) ? 'bold' : '' }}">
+                        {{monthNames[day.date.getMonth()].substring(0,3)}}. {{day.date.getDate()}}
+                    </small>
+                    <div class="cell-content" *ngIf="isCurrentMonth(day)">
+                        <div class="hours">
+                            <div class="hour" *ngFor="let hour of day.hours">
+                                <span *ngIf="hour.hours < 10">&nbsp;</span>{{hour.hours}} - {{hour.description || 'No
+                                description'}}
+                            </div>
+                        </div>
+                        <div class="button-wrapper"
+                            matTooltip="{{(canReserve(day) && !day.isPastDate) ? 'Reserve hours' : 'Cannot reserve hours for this day'}}">
+                            <button mat-raised-button class="cell-button" (click)="addHours(day)"
+                                [disabled]="(!canReserve(day) || day.isPastDate)">Add<mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fri">
+            <th mat-header-cell *matHeaderCellDef>Friday</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'background-color': dayCellColor(week.day('fri'))}">
+                <ng-container *ngFor="let day of [week.day('fri')]">
+                    <small class="cell-date {{(day.isToday) ? 'bold' : '' }}">
+                        {{monthNames[day.date.getMonth()].substring(0,3)}}. {{day.date.getDate()}}
+                    </small>
+                    <div class="cell-content" *ngIf="isCurrentMonth(day)">
+                        <div class="hours">
+                            <div class="hour" *ngFor="let hour of day.hours">
+                                <span *ngIf="hour.hours < 10">&nbsp;</span>{{hour.hours}} - {{hour.description || 'No
+                                description'}}
+                            </div>
+                        </div>
+                        <div class="button-wrapper"
+                            matTooltip="{{(canReserve(day) && !day.isPastDate) ? 'Reserve hours' : 'Cannot reserve hours for this day'}}">
+                            <button mat-raised-button class="cell-button" (click)="addHours(day)"
+                                [disabled]="(!canReserve(day) || day.isPastDate)">Add<mat-icon>add</mat-icon></button>
+                        </div>
+                    </div>
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hrs_total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let week" [ngStyle]="{'border-left': '2px solid rgba(0,0,0,.12)'}">
+                {{week.hoursTotalNum}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="week_num">
+            <th mat-header-cell *matHeaderCellDef>Week</th>
+            <td mat-cell *matCellDef="let week">{{weekNumByDay(week.day('mon'))}}.</td>
+        </ng-container>
+
+        <ng-container matColumnDef="footer">
+            <td mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+                <div style="float:right;">
+                    <button mat-icon-button (click)="refresh()" matTooltip="Refresh">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="jumpToCurrentMonth()" matTooltip="Jump to current month">
+                        <mat-icon>history</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="prevMonth()" matTooltip="Previous month">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
+                    {{currentMonthDisplay}}
+                    <button mat-icon-button (click)="nextMonth()" matTooltip="Next month">
+                        <mat-icon>chevron_right</mat-icon>
+                    </button>
+                    <input matInput class="month-picker-hidden-input" [matDatepicker]="dp" [value]="currentMonth">
+                    <mat-datepicker-toggle matSuffix [for]="dp" matTooltip="Select month"></mat-datepicker-toggle>
+                    <mat-datepicker #dp startView="year" (monthSelected)="switchMonth($event, dp)"
+                        panelClass="month-picker">
+                    </mat-datepicker>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loading">
+            <td mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+                <div class="table-big-row">
+                    <mat-spinner></mat-spinner>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="error">
+            <td mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+                <div class="table-big-row">
+                    {{errorMsg}}
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="(!shouldShowRow('calendar')) ? 'd-none': ''"></tr>
+        <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="(!shouldShowRow('loading')) ? 'd-none': ''"></tr>
+        <tr mat-footer-row *matFooterRowDef="['error']" [ngClass]="(!shouldShowRow('error')) ? 'd-none ': ''"></tr>
+        <tr mat-footer-row *matFooterRowDef="['footer']"></tr>
+        
+
+    </table>
+</div>

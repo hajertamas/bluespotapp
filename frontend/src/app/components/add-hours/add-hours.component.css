@@ -1,0 +1,13 @@
+mat-form-field {
+    display: block;
+    margin-bottom: 10px;
+}
+
+mat-dialog-content{
+    max-width: 100%;
+    width: 300px;
+}
+
+mat-spinner{
+    margin: 77.5px auto;
+}
