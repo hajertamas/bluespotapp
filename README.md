@@ -23,7 +23,7 @@ npm install
 ng serve --o
 ```
 
-Teszt adatbázis import (test_import mappá-t tartalmazza a repo):
+Teszt adatbázis import (test_import mappát tartalmazza a repo):
 ```
 \backend>php migrate.php --uninstall --install --import test_import
 ```
